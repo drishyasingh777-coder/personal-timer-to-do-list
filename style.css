@@ -1,0 +1,55 @@
+/* colors */
+
+:root{
+    --orange: #ff5722;
+    --white: #FFFFFF;
+    --brown: #67452D;
+    --lightorange: #F19561;
+    --borderyellow: #F9BD00;
+    --backgroundyellow: #FFEA79;
+}
+
+/*Icons*/
+.shrink-icon{
+    width:28px;
+    height:28px;
+    object-fit:cover;
+}
+
+.close-icon{
+    width:28px;
+    height:28px;
+    object-fit:cover;
+}
+
+/*start page*/
+.start-container{
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center;
+    flex-grow: 1; /* Take up remaining space if needed */
+    gap: 1rem;
+    max-width: 230px;    
+}
+
+/* menu page */
+.menu-container{
+    display: flex;
+    width: 17.633rem;
+    padding: 0.68213rem 0rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.40925rem;
+}
+
+.options{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 1.5rem 1.63713rem;
+    align-self: stretch;
+    flex-wrap: wrap;
+}
