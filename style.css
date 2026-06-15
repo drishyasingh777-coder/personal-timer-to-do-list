@@ -1,0 +1,70 @@
+/* =========================
+   COLOR VARIABLES
+========================= */
+:root {
+    --orange: #FF5722;
+    --white: #FFFFFF;
+    --brown: #67452D;
+    --lightorange: #F19561;
+    --borderyellow: #F9BD00;
+    --backgroundyellow: #FFEA79;
+}
+
+/* =========================
+   BACK TO START BUTTON
+========================= */
+#back-to-start {
+    transition: transform 0.3s ease;
+}
+
+#back-to-start:hover {
+    transform: scale(1.05);
+}
+
+/* =========================
+   ICONS
+========================= */
+.shrink-icon,
+.close-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+}
+
+/* =========================
+   START PAGE
+========================= */
+.start-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    flex-grow: 1;
+    gap: 1rem;
+    max-width: 230px;
+}
+
+/* =========================
+   MENU PAGE
+========================= */
+.menu-container {
+    display: flex;
+    width: 17.633rem;
+    padding: 0.68213rem 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.40925rem;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+
+    gap: 1.5rem 1.63713rem;
+    align-self: stretch;
+    flex-wrap: wrap;
+}
