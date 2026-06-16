@@ -1,13 +1,58 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hello world!</title>
-        <link rel=""stylesheet" href=""index.css" />
-    </head>
-    <body>
-        <h1>💗personal timer!</h1>
-        <p> Welcome to your personal timer!</p>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="window">
+
+        <div class="title-bar">
+            <h1>Personal Timer</h1>
+
+            <div class="window-buttons">
+                <button>-</button>
+                <button>X</button>
+            </div>
+        </div>
+
+        <div class="main-screen" id="startScreen">
+
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+            <div class="cloud cloud4"></div>
+
+            <h2>
+                Let's<br>
+                start with<br>
+                the timer
+            </h2>
+
+            <button id="startBtn">START</button>
+
+        </div>
+
+        <div class="timer-screen hidden" id="timerScreen">
+
+            <h2>Timer</h2>
+
+            <div id="timeDisplay">25:00</div>
+
+            <div class="controls">
+                <button id="minusBtn">-</button>
+                <button id="plusBtn">+</button>
+            </div>
+
+            <button id="beginBtn">Begin</button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
