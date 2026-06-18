@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productivity Hub</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productivity Hub</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+<div id="welcome-screen" class="screen">
+    <h1>Productivity Hub 🚀</h1>
+    <p>Manage Tasks & Stay Focused</p>
+    <button id="begin-btn">Begin</button>
+</div>
+
+<div id="app-screen" class="screen hidden">
 
     <h1>Productivity Hub 🚀</h1>
 
     <div class="card">
         <h2>Pomodoro Timer</h2>
-
         <div id="timer">25:00</div>
 
-        <div class="buttons">
-            <button onclick="startTimer()">Start</button>
-            <button onclick="pauseTimer()">Pause</button>
-            <button onclick="resetTimer()">Reset</button>
+        <div class="button-group">
+            <button id="start-btn">Start</button>
+            <button id="pause-btn">Pause</button>
+            <button id="reset-btn">Reset</button>
         </div>
     </div>
 
@@ -28,16 +33,15 @@
         <h2>My Tasks</h2>
 
         <div class="task-input">
-            <input type="text" id="taskInput" placeholder="Enter task">
-            <button onclick="addTask()">Add</button>
+            <input type="text" id="task-input" placeholder="Enter a task">
+            <button id="add-task-btn">Add</button>
         </div>
 
-        <ul id="taskList"></ul>
+        <ul id="task-list"></ul>
     </div>
 
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
