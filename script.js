@@ -1,72 +1,80 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
+// TIMER
+
+let time = 25 * 60;
+let timer;
+let running = false;
+
+const timerDisplay = document.getElementById("timer");
+
+function updateTimer() {
+
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    timerDisplay.textContent =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
 }
 
-body{
-    background:#f4f4f4;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-}
+updateTimer();
 
-.container{
-    width:90%;
-    max-width:600px;
-}
+document.getElementById("startBtn").addEventListener("click", function () {
 
-h1{
-    text-align:center;
-    margin-bottom:20px;
-}
+    if (running) return;
 
-.box{
-    background:white;
-    padding:20px;
-    margin-bottom:20px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
-}
+    running = true;
 
-#timer{
-    font-size:50px;
-    text-align:center;
-    color:#ff5722;
-    margin:15px 0;
-}
+    timer = setInterval(function () {
 
-button{
-    padding:10px 15px;
-    border:none;
-    border-radius:5px;
-    background:#ff5722;
-    color:white;
-    cursor:pointer;
-    margin:5px;
-}
+        if (time > 0) {
+            time--;
+            updateTimer();
+        } else {
+            clearInterval(timer);
+            alert("Time's Up!");
+            running = false;
+        }
 
-button:hover{
-    opacity:0.9;
-}
+    }, 1000);
+});
 
-input{
-    width:70%;
-    padding:10px;
-}
+document.getElementById("pauseBtn").addEventListener("click", function () {
 
-ul{
-    margin-top:15px;
-    list-style:none;
-}
+    clearInterval(timer);
+    running = false;
+});
 
-li{
-    background:#eee;
-    padding:10px;
-    margin-bottom:8px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
+document.getElementById("resetBtn").addEventListener("click", function () {
+
+    clearInterval(timer);
+    running = false;
+
+    time = 25 * 60;
+
+    updateTimer();
+});
+
+
+// TO-DO LIST
+
+document.getElementById("addBtn").addEventListener("click", function () {
+
+    let taskText = document.getElementById("taskInput").value;
+
+    if (taskText === "") return;
+
+    let li = document.createElement("li");
+
+    li.innerHTML =
+        taskText +
+        '<button class="deleteBtn">Delete</button>';
+
+    document.getElementById("taskList").appendChild(li);
+
+    li.querySelector(".deleteBtn").addEventListener("click", function () {
+        li.remove();
+    });
+
+    document.getElementById("taskInput").value = "";
+});
