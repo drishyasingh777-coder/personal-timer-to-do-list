@@ -1,63 +1,76 @@
-const startBtn = document.getElementById("startBtn");
-const startScreen = document.getElementById("startScreen");
-const timerScreen = document.getElementById("timerScreen");
+// TIMER
 
-const timeDisplay = document.getElementById("timeDisplay");
-const plusBtn = document.getElementById("plusBtn");
-const minusBtn = document.getElementById("minusBtn");
-const beginBtn = document.getElementById("beginBtn");
-
-let minutes = 25;
-let seconds = 0;
+let time = 25 * 60;
 let timer;
+let running = false;
 
-startBtn.addEventListener("click", () => {
-    startScreen.classList.add("hidden");
-    timerScreen.classList.remove("hidden");
-});
+function updateDisplay() {
 
-plusBtn.addEventListener("click", () => {
-    minutes++;
-    updateDisplay();
-});
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
 
-minusBtn.addEventListener("click", () => {
-    if(minutes > 1){
-        minutes--;
-        updateDisplay();
-    }
-});
+    document.getElementById("timer").textContent =
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
 
-beginBtn.addEventListener("click", () => {
+function startTimer() {
 
-    clearInterval(timer);
+    if(running) return;
+
+    running = true;
 
     timer = setInterval(() => {
 
-        if(seconds === 0){
-
-            if(minutes === 0){
-                clearInterval(timer);
-                alert("Time's up!");
-                return;
-            }
-
-            minutes--;
-            seconds = 59;
+        if(time > 0){
+            time--;
+            updateDisplay();
         }
         else{
-            seconds--;
+            clearInterval(timer);
+            running = false;
+            alert("Pomodoro Session Complete!");
         }
 
-        updateDisplay();
-
     },1000);
-});
+}
 
-function updateDisplay(){
+function pauseTimer() {
+    clearInterval(timer);
+    running = false;
+}
 
-    let m = String(minutes).padStart(2,"0");
-    let s = String(seconds).padStart(2,"0");
+function resetTimer() {
+    clearInterval(timer);
+    running = false;
+    time = 25 * 60;
+    updateDisplay();
+}
 
-    timeDisplay.textContent = `${m}:${s}`;
+updateDisplay();
+
+
+// TO DO LIST
+
+function addTask(){
+
+    let input = document.getElementById("taskInput");
+
+    if(input.value.trim() === ""){
+        return;
+    }
+
+    let li = document.createElement("li");
+
+    li.innerHTML = `
+        ${input.value}
+        <button class="delete-btn">Delete</button>
+    `;
+
+    li.querySelector(".delete-btn").addEventListener("click", () => {
+        li.remove();
+    });
+
+    document.getElementById("taskList").appendChild(li);
+
+    input.value = "";
 }
