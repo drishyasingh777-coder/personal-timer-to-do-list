@@ -1,76 +1,132 @@
-// TIMER
+// Welcome Screen
+
+const beginBtn = document.getElementById("begin-btn");
+const welcomeScreen = document.getElementById("welcome-screen");
+const appScreen = document.getElementById("app-screen");
+
+beginBtn.addEventListener("click", () => {
+    welcomeScreen.classList.add("hidden");
+    appScreen.classList.remove("hidden");
+});
+
+// Timer
 
 let time = 25 * 60;
-let timer;
+let interval;
 let running = false;
 
-function updateDisplay() {
+const timerDisplay = document.getElementById("timer");
+
+function updateTimer() {
 
     let minutes = Math.floor(time / 60);
     let seconds = time % 60;
 
-    document.getElementById("timer").textContent =
-        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    timerDisplay.textContent =
+        `${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
 }
 
-function startTimer() {
+updateTimer();
+
+document.getElementById("start-btn").addEventListener("click", () => {
 
     if(running) return;
 
     running = true;
 
-    timer = setInterval(() => {
+    interval = setInterval(() => {
 
         if(time > 0){
             time--;
-            updateDisplay();
+            updateTimer();
         }
         else{
-            clearInterval(timer);
+            clearInterval(interval);
             running = false;
             alert("Pomodoro Session Complete!");
         }
 
     },1000);
-}
+});
 
-function pauseTimer() {
-    clearInterval(timer);
-    running = false;
-}
+document.getElementById("pause-btn").addEventListener("click", () => {
 
-function resetTimer() {
-    clearInterval(timer);
+    clearInterval(interval);
     running = false;
+});
+
+document.getElementById("reset-btn").addEventListener("click", () => {
+
+    clearInterval(interval);
+    running = false;
+
     time = 25 * 60;
-    updateDisplay();
-}
+    updateTimer();
+});
 
-updateDisplay();
+// To-Do List
 
+const taskInput = document.getElementById("task-input");
+const addTaskBtn = document.getElementById("add-task-btn");
+const taskList = document.getElementById("task-list");
 
-// TO DO LIST
+loadTasks();
+
+addTaskBtn.addEventListener("click", addTask);
 
 function addTask(){
 
-    let input = document.getElementById("taskInput");
+    const taskText = taskInput.value.trim();
 
-    if(input.value.trim() === ""){
-        return;
-    }
+    if(taskText === "") return;
 
-    let li = document.createElement("li");
+    createTask(taskText);
+
+    saveTask(taskText);
+
+    taskInput.value = "";
+}
+
+function createTask(taskText){
+
+    const li = document.createElement("li");
 
     li.innerHTML = `
-        ${input.value}
+        <span>${taskText}</span>
         <button class="delete-btn">Delete</button>
     `;
 
     li.querySelector(".delete-btn").addEventListener("click", () => {
+
+        removeTask(taskText);
+
         li.remove();
     });
 
-    document.getElementById("taskList").appendChild(li);
+    taskList.appendChild(li);
+}
 
-    input.value = "";
+function saveTask(task){
+
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    tasks.push(task);
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasks(){
+
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    tasks.forEach(task => createTask(task));
+}
+
+function removeTask(task){
+
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    tasks = tasks.filter(t => t !== task);
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
