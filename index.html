@@ -1,43 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Productivity Hub</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="welcome-screen" class="screen">
-    <h1>Productivity Hub 🚀</h1>
-    <p>Manage Tasks & Stay Focused</p>
-    <button id="begin-btn">Begin</button>
-</div>
+<div class="container">
 
-<div id="app-screen" class="screen hidden">
+    <h1>Productivity App 🚀</h1>
 
-    <h1>Productivity Hub 🚀</h1>
-
-    <div class="card">
+    <div class="box">
         <h2>Pomodoro Timer</h2>
+
         <div id="timer">25:00</div>
 
-        <div class="button-group">
-            <button id="start-btn">Start</button>
-            <button id="pause-btn">Pause</button>
-            <button id="reset-btn">Reset</button>
-        </div>
+        <button id="startBtn">Start</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="resetBtn">Reset</button>
     </div>
 
-    <div class="card">
-        <h2>My Tasks</h2>
+    <div class="box">
+        <h2>To-Do List</h2>
 
-        <div class="task-input">
-            <input type="text" id="task-input" placeholder="Enter a task">
-            <button id="add-task-btn">Add</button>
-        </div>
+        <input type="text" id="taskInput" placeholder="Enter a task">
+        <button id="addBtn">Add Task</button>
 
-        <ul id="task-list"></ul>
+        <ul id="taskList"></ul>
     </div>
 
 </div>
