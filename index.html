@@ -3,56 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Timer</title>
+    <title>Productivity Hub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="window">
+<div class="container">
 
-        <div class="title-bar">
-            <h1>Personal Timer</h1>
+    <h1>Productivity Hub 🚀</h1>
 
-            <div class="window-buttons">
-                <button>-</button>
-                <button>X</button>
-            </div>
+    <div class="card">
+        <h2>Pomodoro Timer</h2>
+
+        <div id="timer">25:00</div>
+
+        <div class="buttons">
+            <button onclick="startTimer()">Start</button>
+            <button onclick="pauseTimer()">Pause</button>
+            <button onclick="resetTimer()">Reset</button>
         </div>
-
-        <div class="main-screen" id="startScreen">
-
-            <div class="cloud cloud1"></div>
-            <div class="cloud cloud2"></div>
-            <div class="cloud cloud3"></div>
-            <div class="cloud cloud4"></div>
-
-            <h2>
-                Let's<br>
-                start with<br>
-                the timer
-            </h2>
-
-            <button id="startBtn">START</button>
-
-        </div>
-
-        <div class="timer-screen hidden" id="timerScreen">
-
-            <h2>Timer</h2>
-
-            <div id="timeDisplay">25:00</div>
-
-            <div class="controls">
-                <button id="minusBtn">-</button>
-                <button id="plusBtn">+</button>
-            </div>
-
-            <button id="beginBtn">Begin</button>
-
-        </div>
-
     </div>
 
-    <script src="script.js"></script>
+    <div class="card">
+        <h2>My Tasks</h2>
+
+        <div class="task-input">
+            <input type="text" id="taskInput" placeholder="Enter task">
+            <button onclick="addTask()">Add</button>
+        </div>
+
+        <ul id="taskList"></ul>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
